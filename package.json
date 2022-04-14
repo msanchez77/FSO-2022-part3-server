@@ -1,0 +1,20 @@
+{
+  "name": "fso-2022-part3-server",
+  "version": "1.0.0",
+  "description": "Implementing a simple REST API in Node.js using Express, storing App data in a MongoDB database and deploying App to the internet",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Sanchez",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  }
+}
