@@ -1,1 +1,1 @@
-DELETE http://localhost:3001/api/persons/{{$randomInt 1 4}}
+DELETE http://localhost:3001/api/persons/6267a8a6633a59028b

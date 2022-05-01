@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/persons/6267137caca743132273718e
+Content-Type: application/json
+
+{
+  "content": "VS Code updated 2",
+  "important": false
+}
