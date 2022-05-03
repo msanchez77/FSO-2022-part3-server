@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('build'))
 
-morgan.token('data', function (req, res) {
+morgan.token('data', function (req) {
   return JSON.stringify(req.body)
 })
 
@@ -23,9 +23,6 @@ app.use(morgan(':method :url :status :req[content-length] - :response-time ms :d
 
 
 // Helper Methods
-const generateRandId = () => {
-  return Math.floor(Math.random() * 1000)
-}
 
 
 
@@ -60,7 +57,7 @@ app.post('/api/persons', (request, response, next) => {
 
   person.save()
     .then(savedPerson => {
-    response.json(savedPerson)
+      response.json(savedPerson)
     })
     .catch(error => next(error))
 })
@@ -72,9 +69,9 @@ app.post('/api/persons', (request, response, next) => {
 // DELETE
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndRemove(request.params.id)
-    .then(result => {
+    .then(
       response.status(204).end()
-    })
+    )
     .catch(error => next(error))
 })
 
@@ -89,7 +86,8 @@ app.put('/api/persons/:id', (request, response, next) => {
   }
 
   Person.findByIdAndUpdate(
-    request.params.id, person, 
+    request.params.id,
+    person,
     { new:true, runValidators: true, context:'query' })
     .then(updatedPerson => {
       response.json(updatedPerson)
